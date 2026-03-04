@@ -1,0 +1,5 @@
+[
+  { "id": "poulet", "name": "Blanc de poulet", "unit": "100g", "kcal": 165, "protein": 31, "carbs": 0, "fat": 3.6 },
+  { "id": "boeuf_steak", "name": "Steak de bœuf", "unit": "100g", "kcal": 250, "protein": 26, "carbs": 0, "fat": 15 },
+  { "id": "jambon", "name": "Jambon", "unit": "100g", "kcal": 145, "protein": 21, "carbs": 1, "fat": 6 }
+]

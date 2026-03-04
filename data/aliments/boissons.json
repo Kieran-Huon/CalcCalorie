@@ -1,0 +1,5 @@
+[
+  { "id": "eau", "name": "Eau", "unit": "100ml", "kcal": 0, "protein": 0, "carbs": 0, "fat": 0 },
+  { "id": "jus_orange", "name": "Jus d’orange", "unit": "100ml", "kcal": 45, "protein": 0.7, "carbs": 10.4, "fat": 0.2 },
+  { "id": "soda", "name": "Soda", "unit": "100ml", "kcal": 42, "protein": 0, "carbs": 10.6, "fat": 0 }
+]

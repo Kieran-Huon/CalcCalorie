@@ -1,0 +1,5 @@
+[
+  { "id": "chocolat_noir", "name": "Chocolat noir", "unit": "100g", "kcal": 546, "protein": 4.9, "carbs": 61, "fat": 31 },
+  { "id": "chips", "name": "Chips", "unit": "100g", "kcal": 536, "protein": 7, "carbs": 53, "fat": 34 },
+  { "id": "amandes", "name": "Amandes", "unit": "100g", "kcal": 579, "protein": 21, "carbs": 22, "fat": 50 }
+]

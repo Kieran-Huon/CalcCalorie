@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CaloriTrack</title>
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🔥</div>
+      <div>
+        <div class="brand-title">CaloriTrack</div>
+        <div class="brand-subtitle" id="todayLabel"></div>
+      </div>
+    </div>
+    <button class="btn ghost" id="resetDayBtn" title="Réinitialiser la journée">Reset</button>
+  </header>
+
+  <main class="container">
+    <!-- DASHBOARD -->
+    <section class="view" data-view="dashboard">
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">Résumé du jour</div>
+          <div class="kpi-row">
+            <div class="kpi">
+              <div class="kpi-label">Calories</div>
+              <div class="kpi-value"><span id="sumKcal">0</span> kcal</div>
+              <div class="kpi-sub">Objectif: <span id="goalKcal">—</span></div>
+            </div>
+            <div class="progress-wrap">
+              <div class="ring" id="ring">
+                <div class="ring-inner">
+                  <div class="ring-value" id="ringPercent">0%</div>
+                  <div class="ring-sub">atteint</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="macro-grid">
+            <div class="macro">
+              <div class="macro-label">Protéines</div>
+              <div class="macro-value"><span id="sumP">0</span> g</div>
+            </div>
+            <div class="macro">
+              <div class="macro-label">Glucides</div>
+              <div class="macro-value"><span id="sumC">0</span> g</div>
+            </div>
+            <div class="macro">
+              <div class="macro-label">Lipides</div>
+              <div class="macro-value"><span id="sumF">0</span> g</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Journal (aujourd’hui)</div>
+          <div class="toolbar">
+            <select id="mealSelect" class="input">
+              <option value="breakfast">Petit-déj</option>
+              <option value="lunch">Déjeuner</option>
+              <option value="dinner">Dîner</option>
+              <option value="snack">Snack</option>
+            </select>
+            <button class="btn" id="clearMealBtn">Vider ce repas</button>
+          </div>
+
+          <div class="meal-tabs" id="mealTabs">
+            <button class="chip active" data-meal="breakfast">Petit-déj</button>
+            <button class="chip" data-meal="lunch">Déjeuner</button>
+            <button class="chip" data-meal="dinner">Dîner</button>
+            <button class="chip" data-meal="snack">Snack</button>
+          </div>
+
+          <div class="list" id="journalList"></div>
+          <div class="hint">Astuce : ajoute vite un aliment depuis “Ajouter”. ⭐ pour favoris.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADD -->
+    <section class="view hidden" data-view="add">
+      <div class="card">
+        <div class="card-title">Ajouter un aliment</div>
+
+        <div class="toolbar">
+          <input id="searchInput" class="input" type="search" placeholder="Rechercher un aliment (ex: banane, riz…)" />
+          <select id="categorySelect" class="input">
+            <option value="all">Toutes catégories</option>
+          </select>
+        </div>
+
+        <div class="toolbar">
+          <select id="addMealSelect" class="input">
+            <option value="breakfast">Petit-déj</option>
+            <option value="lunch">Déjeuner</option>
+            <option value="dinner">Dîner</option>
+            <option value="snack">Snack</option>
+          </select>
+
+          <div class="qty">
+            <input id="qtyInput" class="input" type="number" min="1" step="1" value="100" />
+            <select id="qtyUnit" class="input">
+              <option value="g">g</option>
+              <option value="ml">ml</option>
+              <option value="portion">portion</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-title">Favoris</div>
+          <div class="list" id="favoritesList"></div>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-title">Résultats</div>
+          <div class="list" id="resultsList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAVORITES -->
+    <section class="view hidden" data-view="favorites">
+      <div class="card">
+        <div class="card-title">Mes favoris</div>
+        <div class="list" id="favoritesPageList"></div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="view hidden" data-view="profile">
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">Profil & métabolisme</div>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Sexe</span>
+              <select id="sex" class="input">
+                <option value="male">Homme</option>
+                <option value="female">Femme</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Âge</span>
+              <input id="age" class="input" type="number" min="10" max="100" value="25" />
+            </label>
+
+            <label class="field">
+              <span>Taille (cm)</span>
+              <input id="height" class="input" type="number" min="120" max="230" value="175" />
+            </label>
+
+            <label class="field">
+              <span>Poids (kg)</span>
+              <input id="weight" class="input" type="number" min="35" max="250" value="70" />
+            </label>
+
+            <label class="field">
+              <span>Activité</span>
+              <select id="activity" class="input">
+                <option value="1.2">Sédentaire</option>
+                <option value="1.375">Légère (1-3j/sem)</option>
+                <option value="1.55" selected>Modérée (3-5j/sem)</option>
+                <option value="1.725">Intense (6-7j/sem)</option>
+                <option value="1.9">Très intense</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Objectif</span>
+              <select id="goal" class="input">
+                <option value="maintain" selected>Maintien</option>
+                <option value="cut">Perte (déficit)</option>
+                <option value="bulk">Prise (surplus)</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Amplitude (kcal)</span>
+              <input id="delta" class="input" type="number" min="100" max="1000" step="50" value="300" />
+            </label>
+          </div>
+
+          <div class="toolbar">
+            <button class="btn" id="saveProfileBtn">Enregistrer</button>
+            <button class="btn ghost" id="resetProfileBtn">Réinitialiser</button>
+          </div>
+
+          <div class="subcard">
+            <div class="subcard-title">Résultats</div>
+            <div class="kpi-list">
+              <div class="kpi2"><span>BMR</span><strong id="bmrOut">—</strong></div>
+              <div class="kpi2"><span>TDEE</span><strong id="tdeeOut">—</strong></div>
+              <div class="kpi2"><span>Objectif kcal/j</span><strong id="goalOut">—</strong></div>
+            </div>
+            <div class="hint">Le dashboard utilisera “Objectif kcal/j” pour l’anneau.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Infos</div>
+          <p class="text">
+            - Aliments: JSON par catégorie dans <code>/data/aliments</code><br/>
+            - Favoris + journal: stockés en <code>localStorage</code> (sans compte).<br/>
+            - Plus tard: on peut ajouter un backend + comptes + sync multi-appareils.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottombar">
+    <button class="navbtn active" data-go="dashboard">
+      <span class="navicon">📊</span><span>Dashboard</span>
+    </button>
+    <button class="navbtn" data-go="add">
+      <span class="navicon">➕</span><span>Ajouter</span>
+    </button>
+    <button class="navbtn" data-go="favorites">
+      <span class="navicon">⭐</span><span>Favoris</span>
+    </button>
+    <button class="navbtn" data-go="profile">
+      <span class="navicon">👤</span><span>Profil</span>
+    </button>
+  </nav>
+
+  <script type="module" src="./assets/js/app.js"></script>
+</body>
+</html>

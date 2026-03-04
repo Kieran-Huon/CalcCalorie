@@ -1,0 +1,5 @@
+[
+  { "id": "yaourt_nature", "name": "Yaourt nature", "unit": "100g", "kcal": 61, "protein": 3.5, "carbs": 4.7, "fat": 3.3 },
+  { "id": "lait_demi_ecreme", "name": "Lait demi-écrémé", "unit": "100ml", "kcal": 46, "protein": 3.2, "carbs": 4.8, "fat": 1.6 },
+  { "id": "fromage_emmental", "name": "Emmental", "unit": "100g", "kcal": 380, "protein": 27, "carbs": 0.5, "fat": 29 }
+]
