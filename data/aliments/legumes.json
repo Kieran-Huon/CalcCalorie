@@ -2,6 +2,6 @@
   { "id": "riz_cuit", "name": "Riz blanc cuit", "unit": "100g", "kcal": 130, "protein": 2.7, "carbs": 28, "fat": 0.3 },
   { "id": "pates_cuites", "name": "Pâtes cuites", "unit": "100g", "kcal": 158, "protein": 5.8, "carbs": 31, "fat": 0.9 },
   { "id": "pain", "name": "Pain", "unit": "100g", "kcal": 265, "protein": 9, "carbs": 49, "fat": 3.2 },
-  {"id": "mais","name": "Maïs (grains)","unit": "100g","kcal": 96,"protein": 3.4,"carbs": 21,"fat": 1.5}
+  { "id": "mais_sec", "name": "Maïs (grain sec)", "unit": "100g", "kcal": 365, "protein": 9.4, "carbs": 74, "fat": 4.7 }
 
 ]
