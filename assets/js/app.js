@@ -978,7 +978,21 @@ function bindEvents() {
   $("#modalCancel").addEventListener("click", closeAddModal);
 
   $("#modalQty").addEventListener("input", updateModalPreview);
-  $("#modalUnit").addEventListener("change", updateModalPreview);
+//   $("#modalUnit").addEventListener("change", updateModalPreview);
+$("#modalUnit").addEventListener("change", () => {
+  const unit = $("#modalUnit").value;
+
+  // règle : portion => qty = 1
+  if (unit === "portion") {
+    $("#modalQty").value = "1";
+  } else {
+    // g/ml => qty = 100
+    $("#modalQty").value = "100";
+  }
+
+  updateModalPreview();
+});
+
 
   $("#modalConfirm").addEventListener("click", confirmModalAdd);
 
