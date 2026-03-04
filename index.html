@@ -101,14 +101,14 @@
             <option value="snack">Snack</option>
           </select>
 
-          <div class="qty">
+          <!-- <div class="qty">
             <input id="qtyInput" class="input" type="number" min="1" step="1" value="100" />
             <select id="qtyUnit" class="input">
               <option value="g">g</option>
               <option value="ml">ml</option>
               <option value="portion">portion</option>
             </select>
-          </div>
+          </div> -->
         </div>
 
         <div class="subcard">
@@ -231,5 +231,52 @@
   </nav>
 
   <script type="module" src="./assets/js/app.js"></script>
+
+  <!-- ADD MODAL -->
+<div class="modal hidden" id="addModal" aria-hidden="true">
+  <div class="modal-backdrop" id="addModalBackdrop"></div>
+
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="addModalTitle">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="addModalTitle">Ajouter</div>
+        <div class="modal-sub" id="addModalSub">—</div>
+      </div>
+      <button class="iconbtn" id="addModalClose" title="Fermer">✖</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-row">
+        <label class="field">
+          <span>Quantité</span>
+          <input id="modalQty" class="input" type="number" min="1" step="1" value="100" />
+        </label>
+
+        <label class="field">
+          <span>Unité</span>
+          <select id="modalUnit" class="input">
+            <option value="g">g</option>
+            <option value="ml">ml</option>
+            <option value="portion">portion (aliment entier)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="hint" id="modalHint">
+        Astuce : “portion” = 1 aliment entier (ex: 1 œuf, 1 yaourt).
+      </div>
+
+      <div class="modal-preview" id="modalPreview">
+        —
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn ghost" id="modalCancel">Annuler</button>
+        <button class="btn" id="modalConfirm">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
